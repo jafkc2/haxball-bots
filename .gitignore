@@ -1,0 +1,6 @@
+node_modules
+.venv
+.ropeproject
+models
+ai/.ropeproject
+ai/src/__pycache__

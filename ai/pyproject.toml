@@ -1,0 +1,25 @@
+[project]
+name = "hax-ai"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "jafkc2"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "stable-baselines3[extra] (>=2.7.0,<3.0.0)",
+    "websockets (>=15.0.1,<16.0.0)",
+    "websocket (>=0.2.1,<0.3.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pyright]
+venvPath = "."
+venv = "../.venv"
+
+[tool.poetry.dependencies]
+python = ">=3.13,<3.14"
