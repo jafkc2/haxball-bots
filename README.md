@@ -1,7 +1,6 @@
 # Haxball Bots
 
-PPO Agents that learn to play [Haxball](https://haxball.com), a physics based, soccer game.
-The objective of this project is to create RL agents capable of playing at human level.
+PPO Agents that learn to play [Haxball](https://haxball.com), a physics-based soccer game. The objective of this project is to create RL agents capable of playing at a human level.
 
 ## How it works
 
