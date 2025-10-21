@@ -27,6 +27,10 @@ const fs = require('fs');
 const wss = new WebSocket.Server({ port: 1327 });
 const { spawn } = require('child_process');
 
+const config = require('./get_config')();
+const python_env = config[1] || "python";
+console.log(`Using python environment: ${python_env}`);
+
 const ais = [];
 var started = false;
 
@@ -146,7 +150,7 @@ start_ai(11)
 //room.startGame(0);
 
 function start_ai(code) {
-  let a = spawn(".venv/bin/python", ["ai/src/main.py"], { stdio: 'inherit', detached: false, env: {...process.env, IPEX_XPU_ONEDNN_LAYOUT: 1} });
+  let a = spawn(python_env, ["ai/src/main.py"], { stdio: 'inherit', detached: false, env: {...process.env, IPEX_XPU_ONEDNN_LAYOUT: 1} });
 }
 
 

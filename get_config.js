@@ -13,4 +13,4 @@ function get_config(configPath = path.join(__dirname, 'config.json')) {
   }
 }
 
-module.exports = getConfigTuple;
+module.exports = get_config;

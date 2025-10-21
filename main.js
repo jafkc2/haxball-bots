@@ -3,7 +3,7 @@ const fs = require('fs');
 const { spawn } = require('child_process');
 const Bot = require('./bot')
 const readline = require('readline');
-
+const config = require('./get_config');
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 1327 });
 
@@ -13,9 +13,17 @@ var is_ai_started = false;
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
+const config = config();
+
+const player_name = config[0] || "JafKC";
+const python_env = config[1] || "python";
+ 
+console.log(`Using player name: ${player_name}`);
+console.log(`Using python environment: ${python_env}`);
+
 let token = "";
 rl.question('Obtain a haxball room token from haxball.com/headlesstoken and paste it here: ', (answer) => {
-  token = answer;
+  token = answer.trim();
 });
 
 Room.create({
@@ -57,7 +65,7 @@ Room.create({
     };
 
     room.onPlayerJoin = (player) => {
-      if (player.name == "JafKC") {
+      if (player.name == player_name) {
         room.setPlayerAdmin(player.id, true);
       }
     }
@@ -93,7 +101,7 @@ Room.create({
 });
 
 function start_ai(code) {
-  let a = spawn(".venv/bin/python", ["ai/src/main.py"], { stdio: 'inherit', detached: false });
+  let a = spawn(python_env, ["ai/src/main.py"], { stdio: 'inherit', detached: false });
 }
 
 
