@@ -3,7 +3,6 @@ const fs = require('fs');
 const { spawn } = require('child_process');
 const Bot = require('./bot')
 const readline = require('readline');
-const config = require('./get_config');
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 1327 });
 
@@ -13,7 +12,7 @@ var is_ai_started = false;
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
-const config = config();
+const config = require('./get_config')();
 
 const player_name = config[0] || "JafKC";
 const python_env = config[1] || "python";
