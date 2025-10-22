@@ -12,9 +12,10 @@
   },
   "dependencies": {
     "node-haxball": "2.3.0",
+    "readline-sync": "^1.4.10",
     "ws": "^8.18.3"
   },
   "devDependencies": {
-    "@types/node": "^24.0.10" 
+    "@types/node": "^24.0.10"
   }
 }

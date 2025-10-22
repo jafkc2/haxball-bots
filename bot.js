@@ -34,6 +34,8 @@ class Bot {
     this.i = 0;
     this.last_action = 0
     this.last_touched_ball = 0;
+    this.terminated = false;
+    this.truncated = false;
 
     this.join_room(code);
   }
@@ -67,6 +69,7 @@ class Bot {
             };
 
             room.onTeamGoal = (id, data) => {
+              this.terminated = true;
               if (room.currentPlayer.team.id == id) {
                 this.scored = 50;
                 if (this.last_touched_ball == room.currentPlayerId) {
@@ -287,9 +290,12 @@ class Bot {
         speed: {
           x: speed.x / 2.6,
           y: speed.y / 2.6
-        }
+        },
+        terminated: this.terminated,
+        truncated: this.truncated
       }
-
+      this.terminated = false;
+      this.truncated = true;
       this.kick_reward = 0;
       this.scored = 0;
 

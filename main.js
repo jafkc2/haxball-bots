@@ -2,15 +2,13 @@ const { OperationType, VariableType, ConnectionState, AllowFlags, Direction, Col
 const fs = require('fs');
 const { spawn } = require('child_process');
 const Bot = require('./bot')
-const readline = require('readline');
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 1327 });
+const readlineSync = require('readline-sync');
 
 const ais = [];
 
 var is_ai_started = false;
-
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
 const config = require('./get_config')();
 
@@ -20,10 +18,9 @@ const python_env = config[1] || "python";
 console.log(`Using player name: ${player_name}`);
 console.log(`Using python environment: ${python_env}`);
 
-let token = "";
-rl.question('Obtain a haxball room token from haxball.com/headlesstoken and paste it here: ', (answer) => {
-  token = answer.trim();
-});
+const token = readlineSync.question('Obtain a haxball room token from haxball.com/headlesstoken and paste it here: ').trim().replace(" ", "");
+
+console.log("token:",token);
 
 Room.create({
   name: "HaxLock",
