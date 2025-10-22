@@ -1,4 +1,5 @@
 # Haxball Bots
+<img width="800" height="528" alt="image" src="https://github.com/user-attachments/assets/0e06b5fc-6725-4ead-becd-c4e8d2f6136d" />
 
 PPO Agents that learn to play [Haxball](https://haxball.com), a physics-based soccer game. The objective of this project is to create RL agents capable of playing at a human level.
 
